@@ -1,3 +1,13 @@
 steps:
   - command: echo hello ci will start now
     key: hello
+  - key: test
+    label: ':golang: test'
+    command:
+      - go test -v -count=1 -cover ./... -coverprofile=coverage.txt -covermode=atomic
+    artifact_paths:
+      - 'coverage.txt' # upload the coverage report as an artifact
+    plugins:
+      - golang#v2.0.0:
+          version: 1.23
+          import: github.com/buildkite/agent
