@@ -1,6 +1,6 @@
 steps:
-  - command: echo hello ci will start now
-    key: hello
+  - key: hello
+    command: echo hello ci will start now
   - key: test
     label: ':golang: test'
     command:
@@ -11,6 +11,7 @@ steps:
       - golang#v2.0.0:
           version: 1.23
           import: github.com/buildkite/agent
+    depends_on: "hello"
   - key: build
     label: ':docker: build'
     command: docker build .
