@@ -11,3 +11,6 @@ steps:
       - golang#v2.0.0:
           version: 1.23
           import: github.com/buildkite/agent
+  - key: build
+    label: ':docker: build'
+    command: docker build .
