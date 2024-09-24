@@ -14,3 +14,4 @@ steps:
   - key: build
     label: ':docker: build'
     command: docker build .
+    depends_on: "test"
